@@ -83,12 +83,12 @@ def registration():
 
     def save():
         is_photo=import_photo_bd(photo_user.path_photo,registr_login.get())
-        if is_photo==False:
-            messagebox.showerror("Ошибка фотографии", "Проверьте что вы точно загружаете фотографию")
+        #if is_photo=="":
+            #messagebox.showerror("Ошибка фотографии", "Проверьте что вы точно загружаете фотографию")
         f=open("registration.log","a")
         f.write(f"{datetime.datetime.now()} The registration window is open\n")
         if registr_password.get()==registr_password1.get():
-            is_reg=reg(registr_login.get(),registr_password.get(),variable.get())
+            is_reg=reg(registr_login.get(),registr_password.get(),variable.get(),is_photo)
             if is_reg=="Успешно":
                 messagebox.showinfo("Успешная регистрация",f"Вы успешно зарегестрировались в системе, ваш ключ авторизации в месседжере \"{AddKeyMessenger(registr_login.get())}\"")
                 #clear_registration_form()

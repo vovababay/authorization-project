@@ -5,38 +5,11 @@ import datetime
 from CodeCheck import Check
 from CreatePass import CreatePassword
 from IsTodayLoginMessenger import ChekTodayLoginInMessenger
-from ResetBoolDay import ResetBool
+
 import time
 from multiprocessing import *
 import schedule
 
-
-
-
-
-
-
-
-
-
-
-try:
-    
-    
-    f=open("login.log","r")
-    now_date=datetime.datetime.now()
-    last_line = f.readlines()[-1]
-
-    last_year=int(last_line[0:10].split('-')[0])
-    last_month=int(last_line[0:10].split('-')[1])
-    last_day=int(last_line[0:10].split('-')[2])
-
-    if datetime.date(last_year,last_month,last_day)<now_date.date():
-        ResetBool()
-    
-except:
-    print("Не получилось сбросить день")
-f.close()
 f=open("login.log","a")
 f.write("\n")
 f.write(f"-----------------------------------------------------------------\n")
@@ -105,7 +78,7 @@ def login():
                 messagebox.showinfo("Успешно","Авторизация через логин и пароль прошла успешно")
                 f.write(f"{datetime.datetime.now()} Successful login to your account '{enter_login.get()}'\n")
                 clear_login_form()
-                Check(root)
+                Check(root,enter_login.get())
             else:
                 messagebox.showerror("Ошибка","Неверный логин или пароль")
                 f.write(f"{datetime.datetime.now()} Unsuccessful login to your account '{enter_login.get()}'\n")

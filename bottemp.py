@@ -1,6 +1,13 @@
 import telebot
 import config
 import psycopg2
+from ResetBoolDay import ResetBool
+import schedule
+import datetime
+from multiprocessing import *
+import time
+from MessageTelegram import MessageTelegramBot
+from MessageTelegram import MessageAllUsers
 
 
 token_telegram = config.TOKEN
@@ -74,14 +81,38 @@ def other(message):
     con.commit()
     cur.close()
   
-    
-    
+def start_process():  # Запуск Process
+    p1 = Process(target=P_schedule.start_schedule, args=()).start()
+
+
+class P_schedule():
+    def start_schedule():
+        schedule.every().day.at("00:00").do(P_schedule.resetBD)
+        schedule.every().day.at("07:00").do(P_schedule.send_message)
+
+        while True:
+            schedule.run_pending()
+            time.sleep(1)
+    def resetBD():
+        ResetBool()
+
+    def send_message():
+        MessageAllUsers()
 
 
 
 
-while True:
+'''while True:
+    start_process()
     try:
         bot.polling(none_stop = True)
+        executor.start_polling(dp)  # cтарт процесса бота (у меня такой, у тебя может отличаться)
     except:
-        continue
+        continue'''
+if __name__ == '__main__':
+    start_process()
+    try:
+        bot.polling(none_stop=True)
+        executor.start_polling(dp) #cтарт процесса бота (у меня такой, у тебя может отличаться)
+    except:
+        pass
