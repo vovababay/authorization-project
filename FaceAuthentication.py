@@ -10,6 +10,7 @@ from scipy.spatial import distance
 import win32com.client as wincl
 import config
 import datetime
+from tkinter import *
 con=config.con
 
 #загружаем сверточные нейросети с официального сайта dlib
@@ -24,7 +25,9 @@ ready_to_detect_identity = True
 windows10_voice_interface = wincl.Dispatch("SAPI.SpVoice")
 
 
-def webcam_face_recognizer():
+def webcam_face_recognizer(login):
+
+
     global ready_to_detect_identity
     finishTime = datetime.datetime.now() + datetime.timedelta(seconds=15)
 
@@ -35,13 +38,9 @@ def webcam_face_recognizer():
         #включение вебкамеры
         _, frame = vc.read()
         img = frame
-
-
         if ready_to_detect_identity:
             cur=con.cursor()
             cur.execute(f"SELECT * FROM users;")
-
-
             # находим лицо с помощью вебкамеры
             dets = detector(img, 1)
             for k, d in enumerate(dets):
@@ -60,7 +59,8 @@ def webcam_face_recognizer():
             while True:
 
                 if datetime.datetime.now()>= finishTime:
-                    print("хуй")
+                    print("Вы не прошли авторизацию")
+                    cv2.imwrite('example.png', img)
                     return False
                 global one_result
                 one_result = cur.fetchone()
@@ -75,10 +75,15 @@ def webcam_face_recognizer():
                 a = distance.euclidean(face_descriptor1, face_descriptor2)
                 # цикл отбора нужных людей
                 while a < 0.521:
-                    print(one_result[1])
-                    cv2.imwrite('example.png', img)
-                    welcome_users(one_result[1])
-                    return True
+                    if login != one_result[1]:
+                        print("это не вы")
+                        cv2.imwrite('example.png', img)
+                        return False
+                    else:
+                        welcome_users(one_result[8])
+                        cv2.imwrite('example.png', img)
+                        return True
+
                 #welcome_users(one_result[1])
 
         key = cv2.waitKey(100)

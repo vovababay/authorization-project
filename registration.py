@@ -1,7 +1,6 @@
 from tkinter import *
 from tkinter import messagebox
 import pickle
-
 from RegistrAccount import reg
 import datetime
 from AttemptsAccount import AddKeyMessenger
@@ -17,8 +16,9 @@ f.write(f"{datetime.datetime.now()} The program registration is running\n")
 f.close()
 
 root=Tk()
-root.geometry("300x500")
+root.geometry("380x500")
 root.title("Регистрация в системе")
+root.resizable(width=False,height=False)
 
 
 
@@ -38,6 +38,8 @@ def registration():
     
     
     text=Label(text="Для входа в систему- зарегестрируйтесь")
+    text_Name = Label(text="Введите имя")
+    registr_Name = Entry()
     text_login=Label(text="Введите логин:")
     registr_login=Entry()
     text_password=Label(text="Введите пароль:")
@@ -46,7 +48,10 @@ def registration():
     registr_password1=Entry(show="*")
     button_registr=Button(text="Зарегестрироватся", command=lambda: save())
     text.pack()
-    
+
+    text_Name.pack()
+    registr_Name.pack()
+
     text_login.pack()
     registr_login.pack()
 
@@ -68,43 +73,39 @@ def registration():
     variable = StringVar(root)
     variable.set("Telegram") # default value
 
-    w = OptionMenu(root, variable, "Telegram", "Viber", "WhatsApp", "Вконтакте")
+    w = OptionMenu(root, variable, "Telegram")
     w.pack()
 
    
     button_registr.pack()
     photo_user=Photo()
-    
-    
-    
-    
-    
-   
 
     def save():
-        is_photo=import_photo_bd(photo_user.path_photo,registr_login.get())
-        #if is_photo=="":
-            #messagebox.showerror("Ошибка фотографии", "Проверьте что вы точно загружаете фотографию")
-        f=open("registration.log","a")
-        f.write(f"{datetime.datetime.now()} The registration window is open\n")
-        if registr_password.get()==registr_password1.get():
-            is_reg=reg(registr_login.get(),registr_password.get(),variable.get(),is_photo)
-            if is_reg=="Успешно":
-                messagebox.showinfo("Успешная регистрация",f"Вы успешно зарегестрировались в системе, ваш ключ авторизации в месседжере \"{AddKeyMessenger(registr_login.get())}\"")
-                #clear_registration_form()
-                f.write(f"{datetime.datetime.now()} Registered user {registr_login.get()}\n")
-                
-            elif is_reg=="Аккаунт существует":
-                messagebox.showerror("Ошибка регистрации","Такой логин уже существует")
-                f.write(f"{datetime.datetime.now()} Registry errors, the user {registr_login.get()} exists\n")
-            elif is_reg=="Пустой ввод":
-                messagebox.showerror("Ошибка регистрации","Логин или пароль не могут быть пустыми")
-                f.write(f"{datetime.datetime.now()} The registration failed, the username or password is empty\n")
+        if photo_user.path_photo == "":
+            messagebox.showerror("Ошибка фотографии", "Проверьте что вы точно загружаете фотографию")
         else:
-            messagebox.showerror("Ошибка регистрации","Пароли не совпадают")
-            f.write(f"{datetime.datetime.now()} Password mismatch\n")
-        f.close()
+            is_photo = import_photo_bd(photo_user.path_photo, registr_login.get())
 
+            f = open("registration.log", "a")
+            f.write(f"{datetime.datetime.now()} The registration window is open\n")
+            if registr_password.get() == registr_password1.get():
+                is_reg = reg(registr_login.get(), registr_password.get(), variable.get(), is_photo, registr_Name.get())
+                if is_reg == "Успешно":
+                    messagebox.showinfo("Успешная регистрация",
+                                        f"Вы успешно зарегестрировались в системе, ваш ключ авторизации в месседжере \"{AddKeyMessenger(registr_login.get())}\"")
+                    # clear_registration_form()
+                    f.write(f"{datetime.datetime.now()} Registered user {registr_login.get()}\n")
+
+                elif is_reg == "Аккаунт существует":
+                    messagebox.showerror("Ошибка регистрации", "Такой логин уже существует")
+                    f.write(f"{datetime.datetime.now()} Registry errors, the user {registr_login.get()} exists\n")
+                elif is_reg == "Пустой ввод":
+                    messagebox.showerror("Ошибка регистрации", "Логин или пароль не могут быть пустыми")
+                    f.write(f"{datetime.datetime.now()} The registration failed, the username or password is empty\n")
+            else:
+                messagebox.showerror("Ошибка регистрации", "Пароли не совпадают")
+                f.write(f"{datetime.datetime.now()} Password mismatch\n")
+            f.close()
 
 registration()
 root.mainloop()

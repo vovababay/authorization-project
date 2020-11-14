@@ -3,7 +3,7 @@ import config
 con=config.con
 
 
-def reg(login,password,messenger,face):
+def reg(login,password,messenger,face,full_name):
     
     
     cur=con.cursor()
@@ -11,7 +11,7 @@ def reg(login,password,messenger,face):
     password=password
     cur.execute(f"select * from users where login='{login}';")
     if (cur.fetchone()==None):
-        cur.execute(f"insert into users(login,paswrd,messenger,is_login_today,face) values('{login}','{password}','{messenger}',false," + "'{" + f"{face}" + "}');")
+        cur.execute(f"insert into users(login,paswrd,messenger,is_login_today,face,first_name) values('{login}','{password}','{messenger}',false,"+"'{"+f"{face}"+"}'"+f",'{full_name}');")
         print(f"insert into users(login,paswrd,messenger,is_login_today,face) values('{login}','{password}','{messenger}',false,"+"'{"+f"{face}"+"}');")#Добавление пользователя в бд
         con.commit()
         return "Успешно"

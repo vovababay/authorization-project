@@ -17,9 +17,9 @@ f.write(f"{datetime.datetime.now()} The program login is running\n")
 f.close()
 
 root=Tk()
-root.geometry("300x500")
+root.geometry("380x500")
 root.title("Войти в систему")
-
+root.resizable(width=False,height=False)
 
 
 
@@ -79,6 +79,7 @@ def login():
                 f.write(f"{datetime.datetime.now()} Successful login to your account '{enter_login.get()}'\n")
                 clear_login_form()
                 Check(root,enter_login.get())
+
             else:
                 messagebox.showerror("Ошибка","Неверный логин или пароль")
                 f.write(f"{datetime.datetime.now()} Unsuccessful login to your account '{enter_login.get()}'\n")
