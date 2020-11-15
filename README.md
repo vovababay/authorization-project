@@ -26,6 +26,6 @@
 
   
 ## Для регистрации прописываем в консоль в корне проекта команду python registration.py 
-## Для авторизации открывает две консоли и прописываем в первую python tempbot.py 
+## Для авторизации открывает две консоли и прописываем в первую python bottemp.py 
 ## Во вторую прописываем python login.py
 ## Для более удобной работы с ботом его лучше сделать службой (примерный [гайд](https://admin-gu.ru/os/windows/upravlenie-sluzhbami-v-windows-iz-konsoli-upravleniya-mmc-i-komandnoj-stroki-utilita-sc) 
