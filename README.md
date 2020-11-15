@@ -25,7 +25,35 @@
 #### easygui (pip install easygui)
 
   
-## Для регистрации прописываем в консоль в корне проекта команду python registration.py 
-## Для авторизации открывает две консоли и прописываем в первую python bottemp.py 
-## Во вторую прописываем python login.py
-## Для более удобной работы с ботом его лучше сделать службой (примерный [гайд](https://admin-gu.ru/os/windows/upravlenie-sluzhbami-v-windows-iz-konsoli-upravleniya-mmc-i-komandnoj-stroki-utilita-sc) 
+### Для регистрации прописываем в консоль в корне проекта команду python registration.py 
+### Для авторизации открывает две консоли и прописываем в первую python bottemp.py 
+### Во вторую прописываем python login.py
+### Для более удобной работы с ботом его лучше сделать службой (примерный [гайд](https://admin-gu.ru/os/windows/upravlenie-sluzhbami-v-windows-iz-konsoli-upravleniya-mmc-i-komandnoj-stroki-utilita-sc) 
+
+## Создание БД:
+### Скачиваете программу [postgresql 13](https://www.enterprisedb.com/postgresql-tutorial-resources-training?cid=437)
+### Пароль ставите 12345678 или который вам удобно, но в файле config меняете значение пароля на свой
+### По очереди прописать в SQL shell:
+### CREATE DATABASE moreauth;
+### \c moreauth;
+```
+CREATE TABLE users
+(
+    id integer NOT NULL PRIMARY KEY,
+    login text  ,
+    paswrd text ,
+    messenger text ,
+    is_login_today boolean,
+    key_messenger text ,
+    id_user_messenger integer,
+    face double precision[],
+    first_name text 
+)
+```
+
+## Для работы бота:
+### Находите в телеграмме аккаунт @BotFather
+### Пишете /start
+### Проходите все нужные вам действия
+### Выключаете возможность добавлять бота в группы(в настройках BotFather)
+### Копируете выданный вам токен и вставляете его в файле config в поле TOKEN
