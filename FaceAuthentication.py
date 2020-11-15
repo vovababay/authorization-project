@@ -59,7 +59,7 @@ def webcam_face_recognizer(login):
             while True:
 
                 if datetime.datetime.now()>= finishTime:
-                    print("Вы не прошли авторизацию")
+                    #print("Вы не прошли авторизацию")
                     cv2.imwrite('example.png', img)
                     return False
                 global one_result
@@ -76,7 +76,7 @@ def webcam_face_recognizer(login):
                 # цикл отбора нужных людей
                 while a < 0.521:
                     if login != one_result[1]:
-                        print("это не вы")
+                        #print("это не вы")
                         cv2.imwrite('example.png', img)
                         return False
                     else:

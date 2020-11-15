@@ -4,7 +4,7 @@ import pickle
 from RegistrAccount import reg
 import datetime
 from AttemptsAccount import AddKeyMessenger
-
+import getpass
 import easygui
 from Registrachui import import_photo_bd
 
@@ -29,7 +29,7 @@ class Photo():
         self.path_photo=''
 
     def findfile(self):
-            input_file = easygui.fileopenbox(filetypes=["*.jpeg","*.jpg","*.png"])
+            input_file = easygui.fileopenbox(default=f"C:\\Users\\{getpass.getuser()}\\Pictures\\",filetypes=["*.jpeg","*.jpg","*.png"])
             self.path_photo=input_file
 
 def registration():
@@ -73,7 +73,7 @@ def registration():
     variable = StringVar(root)
     variable.set("Telegram") # default value
 
-    w = OptionMenu(root, variable, "Telegram")
+    w = OptionMenu(root, variable, "Telegram", "Viber", "WhatsApp", "Вконтакте")
     w.pack()
 
    

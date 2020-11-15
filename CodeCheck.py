@@ -42,7 +42,7 @@ def Check(root, login):
             if enter_code.get()==code:
                 messagebox.showinfo("Отлично","Код верный, нажмите ок и посмотрите в камеру")
                 temp = webcam_face_recognizer(login)
-                print(temp)
+                #print(temp)
                 if temp == True:
                     messagebox.showinfo('Удачно','Вы успешно авторизовались')
                     raise SystemExit

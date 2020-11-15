@@ -23,10 +23,6 @@ root.resizable(width=False,height=False)
 
 
 
-
-
-
-
 def login():
     
     f=open("login.log","a")
@@ -65,7 +61,7 @@ def login():
     def log_pass():
 
         temp_bool=Authentify(enter_login.get(),enter_password.get())
-        print(temp_bool)
+        #print(temp_bool)
         f=open("login.log","a")
         
             

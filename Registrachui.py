@@ -6,7 +6,7 @@ con=config.con
 
 def import_photo_bd(path, login):
     try:
-        print(path)
+        #print(path)
         #загружаем сверточные нейросети с официального сайта dlib
         sp = dlib.shape_predictor('shape_predictor_68_face_landmarks.dat')
         #сверточная нейросеть выделения на фотографии лица с помощью 68 ключевых точек
@@ -20,14 +20,14 @@ def import_photo_bd(path, login):
         for k, d in enumerate(dets):
             shape = sp(img, d)
         face_descriptor1 = facerec.compute_face_descriptor(img, shape)
-        print(type(face_descriptor1))#Загрузить дескриптор в БД
+        #print(type(face_descriptor1))#Загрузить дескриптор в БД
         descriptorDB = ""
         for i in range(len(face_descriptor1)):
             if i == len(face_descriptor1)-1:
                 descriptorDB += f"{face_descriptor1[i]}"
             else:
                 descriptorDB += f"{face_descriptor1[i]}, "
-        print(descriptorDB)
+        #print(descriptorDB)
 
         #face_descriptor1.appand()
         #Загрузка дескриптора в бд

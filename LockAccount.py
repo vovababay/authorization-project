@@ -18,7 +18,7 @@ def UnlockingAccount():
     islocking=False
 
 def IsLockAccount():
-    print(islocking)
+    #print(islocking)
     return islocking
 
 LockingAccount()

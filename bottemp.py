@@ -48,14 +48,19 @@ def other(message):
             
             if ky==None:
                 bot.send_message(chat_id,"Неверный ключ")
-
+            #print("1")
             else:
+                #if ky[6]==None:
+                    #cur.execute(f"UPDATE users SET id_user_messenger=\'{chat_id}\' WHERE key_messenger=\'{message.text}\';")
+                    #bot.send_message(chat_id, "Вы успешно авторизовались")
+
                 cur.execute(f"SELECT id_user_messenger FROM users where key_messenger=\'{message.text}\';")
                 lzh_ky=(cur.fetchone()[0])
                 
                 if lzh_ky!=None:
                     bot.send_message(chat_id,"Неверный ключ")
                 else:
+                    bot.send_message(chat_id, "Вы успешно авторизовались в мессенджере, отправьте код повторно для авторизации на сегодняшний день")
                     cur.execute(f"UPDATE users SET id_user_messenger=\'{chat_id}\' WHERE key_messenger=\'{message.text}\';")
 
         else:
@@ -66,17 +71,16 @@ def other(message):
                 keycode=cur.fetchone()[0]
                 if keycode==message.text:
                     cur.execute(f"UPDATE users SET is_login_today=true WHERE key_messenger='{message.text}';")
-                    bot.send_message(chat_id,"Вы успешно авторизовались")
+                    bot.send_message(chat_id,"Вы успешно авторизовались на текущий день")
                 else:
                     bot.send_message(chat_id,"Неверный код")
             else:
                 bot.send_message(chat_id,"Вы уже авторизовались")
-            
 
 
 
 
-   
+
     
     con.commit()
     cur.close()
@@ -101,7 +105,6 @@ class P_schedule():
 
 
 
-
 '''while True:
     start_process()
     try:
@@ -109,8 +112,10 @@ class P_schedule():
         executor.start_polling(dp)  # cтарт процесса бота (у меня такой, у тебя может отличаться)
     except:
         continue'''
+
 if __name__ == '__main__':
     start_process()
+
     try:
         bot.polling(none_stop=True)
         executor.start_polling(dp) #cтарт процесса бота (у меня такой, у тебя может отличаться)
