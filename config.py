@@ -1,4 +1,4 @@
-TOKEN = '1459605967:AAGC7XKJJOGMrHjR-Yjl38Wm4T2N5PKpwLI'
+TOKEN = ''
 
 
 import psycopg2
