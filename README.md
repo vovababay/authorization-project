@@ -39,7 +39,7 @@
 ```
 CREATE TABLE users
 (
-    id integer NOT NULL PRIMARY KEY,
+    id serial PRIMARY KEY,
     login text  ,
     paswrd text ,
     messenger text ,
