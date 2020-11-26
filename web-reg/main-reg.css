@@ -1,0 +1,175 @@
+* {
+	font-family: "Roboto", sans-serif;
+	box-sizing: border-box;
+	font-weight: 300;
+}
+
+
+body {
+
+	background: -webkit-linear-gradient(to right, #191970, #191970);
+	background: linear-gradient(to right, #800080, #191970);
+
+	color: white;
+	padding: 50px;
+}
+#text{
+	position: absolute;
+	left: 60px;
+	top: 10px;
+	font-size: 50px;
+	font-weight: 100;
+}
+/*ТУТ НАЧИНАЮТСЯ ОКНА ВВОДА */
+#name {
+	position: absolute;
+	left: 140px;
+	top: 140px;
+	display: block;
+	border: none;
+	background: rgba(192, 192, 192, .9);
+	border-radius: 5px;
+	padding: 10px;
+	color: white;
+	outline: none;
+	font-size: 30px;
+
+}
+#login {
+	position: absolute;
+	left: 140px;
+	top: 200px;
+	display: block;
+	border: none;
+	background: rgba(192, 192, 192, .9);
+	border-radius: 5px;
+	padding: 10px;
+	color: white;
+	outline: none;
+	font-size: 30px;
+}
+#password {
+	position: absolute;
+	left: 140px;
+	top: 260px;
+	display: block;
+	border: none;
+	background: rgba(192, 192, 192, .9);
+	border-radius: 5px;
+	padding: 10px;
+	color: white;
+	outline: none;
+	font-size: 30px;
+}
+#rep_password {
+	position: absolute;
+	left: 140px;
+	top: 320px;
+	display: block;
+	border: none;
+	background: rgba(192, 192, 192, .9);
+	border-radius: 5px;
+	padding: 10px;
+	color: white;
+	outline: none;
+	font-size: 30px;
+
+
+/*ТУТ НАЧИНАЮТСЯ КНОПКИ */
+}
+#photo {
+	display: block;
+	border: none;
+
+	background: -webkit-linear-gradient(to right, #48D1CC, #32CD32);
+	background: linear-gradient(to right, #48D1CC, #32CD32);
+
+
+	position: absolute;
+	left: 115px;
+	top: 400px;
+	border-radius: 10px;
+	padding: 15px;
+	color: white;
+	outline: none;
+	font-size: 15px;
+	text-transform: uppercase;
+	cursor: pointer;
+}
+
+#photo:hover {
+	opacity: .9
+}
+#photo:active {
+	font-size: 14.5px;
+	position: absolute;
+	left: 117.5px;
+	top: 400.5px;
+}
+#messenger {
+	display: block;
+	border: none;
+
+	background: -webkit-linear-gradient(to right, #DC143C, #DB7093);
+	background: linear-gradient(to right, #DC143C, #DB7093);
+
+
+	position: absolute;
+	left: 320px;
+	top: 400px;
+	border-radius: 10px;
+	padding: 15px;
+	color: white;
+	outline: none;
+	font-size: 15px;
+	text-transform: uppercase;
+	cursor: pointer;
+}
+#messenger1 {
+	color: black
+}
+#messenger2 {
+	color: black
+}
+#messenger3 {
+	color: black
+}
+#messenger:hover {
+	opacity: .9
+}
+#messenger:active{
+	font-size: 14.5px;
+	position: absolute;
+	left: 322.5px;
+	top: 400.5px;
+
+}
+#register {
+	display: block;
+	border: none;
+
+	background: -webkit-linear-gradient(to right, #FFD700, #FF4500);
+	background: linear-gradient(to right, #FFD700, #FF4500);
+
+
+	position: absolute;
+	left: 122px;
+	top: 470px;
+	border-radius: 10px;
+	padding: 25px;
+	color: white;
+	outline: none;
+	font-size: 30px;
+	text-transform: uppercase;
+	font-weight: bold;
+	cursor: pointer;
+}
+#register:hover {
+	opacity: .9
+}
+#register:active {
+	font-size: 29px;
+	position: absolute;
+	left: 128px;
+	top: 471px;
+}

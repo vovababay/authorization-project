@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Код подтверждения</title>
+
+	<script src="eel.js"></script>
+	<link rel="icon" type="image/png" href="/favicon.png">
+
+	<link rel="stylesheet" href="main-uspeh.css">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display-swap" rel="stylesheet">
+
+</head>
+<body>
+
+	<p id="text">Вы успешно зарегистрировались!</p>
+
+	<button id="enter">Ок</button>
+
+	<div id="info"></div>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min,js"></script>
+	<script type="text/javascript">
+
+		let enter = document.querySelector("#enter");
+		enter.addEventListener("click", sendEnt);
+		let registration = document.querySelector("#registration");
+		registration.addEventListener("click", sendReg);
+		//прикручиваем чтобы функция работала по клику на кпопку
+		async function sendEnt() {
+			//функия sendEnt которая работает от кнопки Готово
+			//тут передаются значения из строк ввода в переменные
+			let key = document.querySelector("#key").value;
+			//передача значения кода подтвержд.
+			await eel.enter_key(key);
+			//передача значений питоновской функции
+		}
+	</script>
+
+</body>
+</html>

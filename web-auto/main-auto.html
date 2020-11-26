@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Авторизация</title>
+
+	<script src="eel.js"></script>
+	<link rel="icon" type="image/png" href="/favicon.png">
+
+	<link rel="stylesheet" href="main-auto.css">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display-swap" rel="stylesheet">
+
+</head>
+<body>
+
+	<p id="text">Авторизация</p>
+	<p id="info_bot">Перед входом не забудьте авторизироваться в боте!</p>
+
+	<input id="login" type="text" placeholder="Введите логин..." required="">
+	<input id="password" type="password" placeholder="Введите пароль..." required="">
+
+	<button id="registration">Регистрация</button>
+	<button id="enter">Войти</button>
+
+	<div id="info"></div>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min,js"></script>
+	<script type="text/javascript">
+
+		let enter = document.querySelector("#enter");
+		enter.addEventListener("click", sendEnt);
+		let registration = document.querySelector("#registration");
+		registration.addEventListener("click", sendReg);
+		//прикручиваем чтобы функция работала по клику на кпопку
+		async function sendEnt() {
+			//функия sendEnt которая работает от кнопки Войти
+			//тут передаются значения из строк ввода в переменные
+			let login = document.querySelector("#login").value;
+			//передача значения логина
+			let password = document.querySelector("#password").value;
+			//передача значения пароля
+			await eel.enter(login, password);
+			//передача значений питоновской функции
+		}
+		async function sendReg() {
+			//функция SendReg которая работает от кнопки Регистрация
+			let registr = "Регистрация";
+
+			await eel.registration(registr);
+		}
+		
+	</script>
+
+</body>
+</html>

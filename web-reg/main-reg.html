@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Регистрация в системе</title>
+
+	<script src="eel.js"></script>
+	<link rel="icon" type="image/png" href="/favicon.png">
+
+	<link rel="stylesheet" href="main-reg.css">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display-swap" rel="stylesheet">
+
+</head>
+<body>
+
+	<p id="text">Регистрация</p>
+
+	<input id="name" type="text" placeholder="Введите имя..." required="">
+	<input id="login" type="text" placeholder="Введите логин..." required="">
+	<input id="password" type="password" placeholder="Введите пароль..." required="">
+	<input id="rep_password" type="password" placeholder="Повторите пароль..." required="">
+
+	<button id="photo">Выбрать фотографию</button>
+	<button id="register">Зарегистрироваться</button>
+	<select id="messenger">
+		<option id="messenger1"selected>Выбрать мессенджер</option>
+		<option id="messenger2">Telegram</option>
+		<option id="messenger3">SMS</option>
+	</select>
+
+	<div id="info"></div>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min,js"></script>
+	<script type="text/javascript">
+
+		let register = document.querySelector("#register");
+		register.addEventListener("click", sendReg);
+		let photo = document.querySelector("#photo");
+		photo.addEventListener("click", sendPhoto);
+		let messenger = document.querySelector("#messenger");
+		messenger.addEventListener("click", sendMess);
+		//прикручиваем чтобы функция работала по клику на кпопку
+		async function sendReg() {
+			//функия sendReg которая работает от кнопки регистрации
+			//тут передаются значения из строк ввода в переменные
+			let name = document.querySelector("#name").value;
+			//передача значения имени
+			let login = document.querySelector("#login").value;
+			//передача значения логина
+			let password = document.querySelector("#password").value;
+			//передача значения пароля
+			let rep_password = document.querySelector("#rep_password").value;
+			//передача значения повтора пароля
+			await eel.register(name, login, password, rep_password);
+			//передача значений питоновской функции
+		}
+		async function sendPhoto() {
+			let photo = "Выберите фотографию";
+
+			await eel.photography(photo);
+		}
+		async function sendMess() {
+			let messenger = document.querySelector("#messenger").value;
+
+			await eel.messenger(messenger);
+		}
+	</script>
+
+</body>
+</html>
