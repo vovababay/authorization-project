@@ -47,7 +47,8 @@ CREATE TABLE users
     key_messenger text ,
     id_user_messenger integer,
     face double precision[],
-    first_name text 
+    first_name text,
+    lock_account boolean
 )
 ```
 
